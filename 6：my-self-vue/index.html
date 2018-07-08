@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue test</title>
+
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="message">
+
+        <input type="text" v-model="user.firstname">
+        <input type="text" v-model="user.lastname">
+        <ul>
+            <li>{{word}}</li>
+            <li>{{user.firstname}}</li>
+            <li>{{user.lastname}}</li>
+            <li>{{computeName}}</li>
+        </ul>
+
+    </div>
+    <script src="./index.js"></script>
+    <script src="./Compile.js"></script>
+    <script src="./Observer.js"></script>
+    <script src="./Watcher.js"></script>
+    <script src="./Dep.js"></script>
+    <script>
+        let vm = new MVVM({
+            el: '#app',
+            data () {
+                return {
+                    word: 'Hello World!',
+                    user: {
+                        firstname: 'firstname',
+                        lastname: 'lastname'
+                    },
+                    message: '我只是一条小消息'
+                }
+            },
+            computed: {
+                computeName () {
+                    return this.word + this.message
+                }
+            }
+        })
+    </script>
+</body>
+</html>
