@@ -4,7 +4,6 @@ class MVVM {
         // 一般参数
         this.$option = options;
         this.$el = options.el;
-        this.$data = options.data;
         this.$data = options.data();
         this._data = this.$data;
         // 如果有要编译的模板，就开始编译
@@ -43,7 +42,6 @@ class MVVM {
             computed &&
             Object.prototype.toString.call(computed) === '[object Object]'
         ) {
-            console.log(computed);
             Object.keys(computed).forEach(key => {
                 if (typeof computed[key] !== 'function') {
                     throw new Error('Must be function!');

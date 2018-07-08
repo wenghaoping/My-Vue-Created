@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>vue test</title>
-
 </head>
 <body>
     <div id="app">
         <input type="text" v-model="message">
-
         <input type="text" v-model="user.firstname">
         <input type="text" v-model="user.lastname">
         <ul>
-            <li>{{word}}</li>
+            <li>{{word}} {{word}} {{word}}</li>
             <li>{{user.firstname}}</li>
             <li>{{user.lastname}}</li>
             <li>{{computeName}}</li>
+            <li v-html="html"></li>
+            <li v-text="message"></li>
         </ul>
 
     </div>
@@ -34,7 +34,8 @@
                         firstname: 'firstname',
                         lastname: 'lastname'
                     },
-                    message: '我只是一条小消息'
+                    message: '我只是一条小消息',
+                    html: '<span style="color: red">我是红色</span>'
                 }
             },
             computed: {

@@ -1,4 +1,5 @@
 let obArr = [];
+// 来copy一份数组的原型方法,防止污染原生数组方法
 const arrayProto = Array.prototype;
 const arrayMethods = Object.create(arrayProto);
 Object.defineProperty(arrayMethods,'push',{

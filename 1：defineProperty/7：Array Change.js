@@ -1,11 +1,11 @@
 let a = {};
 bValue = 1;
 Object.defineProperty(a, "b", {
-    set: function (value) {
+    set: (value) => {
         bValue = value;
         console.log("setted");
     },
-    get: function () {
+    get: () => {
         return bValue;
     }
 });
@@ -22,4 +22,5 @@ console.log(a.b); // [1,10,3,4,undefined];
 // 因此第一点，如果想要触发数据双向绑定，我们不要使用arr[1]=newValue;这样的语句来实现；
 // 第二点，框架也提供了许多方法来实现数组的双向绑定。
 // 对于框架如何实现数组变化的监测，大多数情况下，框架会重写Array.prototype.push方法，
-// 并生成一个新的数组赋值给数据，这样数据双向绑定就会触发。作为框架使用者，我们需要知道的就是，这样实现的数组修改会消耗更多的内存。
+// 并生成一个新的数组赋值给数据，这样数据双向绑定就会触发。作为框架使用者，
+// 我们需要知道的就是，这样实现的数组修改会消耗更多的内存。

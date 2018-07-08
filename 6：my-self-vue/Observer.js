@@ -31,14 +31,16 @@ class Observer {
             enumerable: true, // 可枚举
             // 取值时调用的方法
             get () {
+                // 第一次取值，不会调用，target不存在
                 Dep.target && dep.addSub(Dep.target);
                 return value;
             },
             set (newValue) {
                 // 如果新值和旧值不相等，则赋值
                 if (newValue !== value) {
+                    // 如果赋值的新值也是一个对象，需要重新劫持
                     that.observer(newValue);
-                    // 当前this不是实例
+                    // 当前this不是实例 vm.$data.message
                     value = newValue;
                     // 通知所有人，数据更新了
                     dep.notify();
