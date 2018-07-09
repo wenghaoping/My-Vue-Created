@@ -54,4 +54,8 @@ class MVVM {
             });
         }
     }
+
+    $watch (key, cb, options) {
+        new Watcher(this, key, cb);
+    }
 }

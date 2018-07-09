@@ -158,14 +158,11 @@ CompileUtil = {
     },
     // v-html处理
     html(node, vm, property) {
-        // console.log(node);
-        // console.log(vm);
-        // console.log(property);
         let updaterFn = this.updater['htmlUpdater'];
-        new Watcher(vm, property, value => {
-            console.log(this._getVal(vm, property));
+        new Watcher(vm, property, (newValue) => {
             updaterFn && updaterFn(node, this._getVal(vm, property));
         });
+        updaterFn && updaterFn(node, this._getVal(vm, property));
     },
     // 输入框处理
     model (node, vm, property) {
@@ -187,7 +184,7 @@ CompileUtil = {
     addEventHandler(node, vm, property, directive) {
         const eventType = directive.split(':')[1];
         // 如果第一个值是对象, 则返回第二个操作数
-        const fn = vm.$options.methods && vm.$options.methods[property];
+        const fn = vm.$option.methods && vm.$option.methods[property];
         if (eventType && fn) {
             node.addEventListener(eventType, fn.bind(vm), false);
         }
@@ -203,7 +200,6 @@ CompileUtil = {
         },
         // 将当前元素节点的innerHTML替换成属性值。
         htmlUpdater(node, value) {
-            console.log(value);
             node.innerHTML = value || '';
         },
         // 将当前元素节点的className替换成属性值。
